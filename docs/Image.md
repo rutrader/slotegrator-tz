@@ -1,0 +1,1 @@
+-  Добавление изображения к продукту [POST /products/{id}/images](./ImageAddToProduct.md)

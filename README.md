@@ -1,0 +1,6 @@
+- Products
+    - [List](./docs/ProductsList.md)
+    - [Favorites](./docs/Favorites.md)
+        - Добавление продукта в избранные [POST /favorites](./docs/FavoritesAdd.md)
+        - Получение списка избранных продуктов [GET /favorites](./docsFavoritesList.md)
+        - Удаление из избранных [DELETE /favorites/{product_id}](./docs/FavoritesDelete.md)
