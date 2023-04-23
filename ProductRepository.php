@@ -9,9 +9,9 @@ class ProductRepository
 	/**
 	 * @return \Market\Product
 	 */
-	public function getOneById(int $id): Product
+	public function getOneById(int $id)
 	{
-		return [];
+		return new \stdClass;
 	}
 
 	/**

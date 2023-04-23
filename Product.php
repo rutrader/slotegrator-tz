@@ -33,11 +33,6 @@ class Product
 	private $category;
 
 	/**
-	 * @var bool
-	 */
-	private $isFavorite;
-
-	/**
 	 * JSON-encoded array of image names
 	 * 
 	 * @var string
@@ -87,20 +82,6 @@ class Product
 	}
 
 	/**
-	 * @return bool
-	 */
-	public function isFavorite(): bool
-	{
-		return $this->isFavorite;
-	}
-
-	public function setFavorite($isFavorite): self
-	{
-		$this->isFavorite = $isFavorite;
-		return $this;
-	}
-
-	/**
 	 * @return array
 	 */
 	public function getImages(): array
@@ -115,6 +96,15 @@ class Product
 	{
 		$this->images = json_encode($images);
 		return $this;
+	}
+
+	/**
+	 * @var \Market\User
+	 * @return bool
+	 */
+	public function isFavorite(User $user): bool
+	{
+		return in_array($this, $user->getFavorites());
 	}
 
 }

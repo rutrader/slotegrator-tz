@@ -82,7 +82,7 @@ class StorageService
 		return $images;
 	}
 
-	public function clearStorage(array $images)
+	public function clearStorage(array $images): bool
 	{
 		try {
 			foreach($images as $image) {
@@ -95,5 +95,7 @@ class StorageService
 		} catch (\Exception $e) {
 			return false;
 		}
+
+		return true;
 	}
 }

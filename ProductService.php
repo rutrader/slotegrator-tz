@@ -4,6 +4,7 @@ namespace Market;
 
 use Market\ProductRepository;
 use Market\StorageService;
+use Market\UserService;
 
 class ProductService
 {
@@ -19,12 +20,20 @@ class ProductService
 	private StorageService $storage;
 
 	/**
-	 * @var \Market\ProductRepository
+	 * @var \Market\UserService
 	 */
-	public function __construct(ProductRepository $productRepository, StorageService $storageService)
+	private $userService;
+
+	/**
+	 * @var \Market\ProductRepository
+	 * @var \Market\StorageService
+	 * @var \Market\UserService
+	 */
+	public function __construct(ProductRepository $productRepository, StorageService $storageService, UserService $userService)
 	{
 		$this->productRepository = $productRepository;
 		$this->storage = $storageService;
+		$this->userService = $userService;
 	}
 
 	/**
@@ -82,9 +91,9 @@ class ProductService
 	 * @var bool
 	 * @return \Market\Product
 	 */
-	public function makeFavorite(Product $product, bool $isFavorite): Product
+	public function toggleFavorite(Product $product, User $user): Product
 	{
-		$product->setFavorite($isFavorite);
+		$this->userService->toggleFavorite($user, $product);
 
 		$this->productRepository->save($product);
 		return $product;
