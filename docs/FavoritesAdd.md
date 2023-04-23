@@ -46,11 +46,11 @@ Content-Type: application/json;charset=UTF-8
 POST /add-to-favorites HTTP/1.1
 Host: api.example.com
 Content-Type: application/json
-```
 
 {
   "id": 5
 }
+```
 
 ## Response
 
