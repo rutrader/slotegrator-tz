@@ -28,8 +28,7 @@ JOIN grades g ON s.marks BETWEEN g.min_mark AND g.max_mark
 ORDER BY 
   s.marks DESC,
   (CASE 
-    WHEN g.grade BETWEEN 8 AND 10 THEN s.name
-    ELSE s.marks DESC 
+    WHEN g.grade BETWEEN 8 AND 10 THEN s.name 
   END) DESC;
 ```
 
@@ -43,10 +42,10 @@ SELECT
 FROM students s
 JOIN grades g ON s.marks BETWEEN g.min_mark AND g.max_mark
 ORDER BY 
-  CASE 
-    WHEN g.grade BETWEEN 8 AND 10 THEN s.name ASC
-    ELSE s.marks DESC 
-  END;
+  s.marks DESC,
+  (CASE 
+    WHEN g.grade BETWEEN 8 AND 10 THEN s.name
+  END) ASC;
 ```
 
 ## Сортировка по оценкам у тех, у кого оценка между 1 и 7.
@@ -55,7 +54,8 @@ ORDER BY
 SELECT s.name, g.grade, s.marks
 FROM students s
 JOIN grades g ON s.marks BETWEEN g.min_mark AND g.max_mark
-ORDER BY 
+ORDER BY
+  s.marks DESC, 
   (CASE 
     WHEN g.grade BETWEEN 1 AND 7 THEN s.marks
   END) ASC;
