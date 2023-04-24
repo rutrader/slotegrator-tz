@@ -26,10 +26,11 @@ SELECT s.name, g.grade, s.marks
 FROM students s
 JOIN grades g ON s.marks BETWEEN g.min_mark AND g.max_mark
 ORDER BY 
-  CASE 
-    WHEN g.grade BETWEEN 8 AND 10 THEN s.name ASC
+  s.marks DESC,
+  (CASE 
+    WHEN g.grade BETWEEN 8 AND 10 THEN s.name
     ELSE s.marks DESC 
-  END;
+  END) DESC;
 ```
 
 Заменить имя у студентов, оценка которых ниже 8
@@ -55,10 +56,9 @@ SELECT s.name, g.grade, s.marks
 FROM students s
 JOIN grades g ON s.marks BETWEEN g.min_mark AND g.max_mark
 ORDER BY 
-  CASE 
-    WHEN g.grade BETWEEN 1 AND 7 THEN s.marks ASC
-    ELSE s.marks DESC
-  END;
+  (CASE 
+    WHEN g.grade BETWEEN 1 AND 7 THEN s.marks
+  END) ASC;
 ```
 
 
